@@ -6,7 +6,7 @@
 echo backstage | npx @backstage/create-app
 ```
 
-2) The above command will fail initially, because `.npmrc` file is missing from the `backstage` folder. Solve this by executing:
+2) If the above command fails initially, it might be because `.npmrc` file is missing from the `backstage` folder and the default `.npmrc` file stored in user home folder is used. Solve this by executing:
 
 
 ```
