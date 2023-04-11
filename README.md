@@ -16,4 +16,6 @@ cp .npmrc backstage/
 3) Install the backstage again:
 
 
-```cd backstage && yarn install```
+```
+cd backstage && yarn install
+```
