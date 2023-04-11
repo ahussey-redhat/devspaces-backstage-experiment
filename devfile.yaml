@@ -14,10 +14,7 @@ components:
         - exposure: public
           name: backstage
           protocol: http
-          targetPort: 3000
-          attributes:
-            discoverable: true
-            urlRewriteSupported: true          
+          targetPort: 3000      
   - name: npm
     volume:
       size: 1G          
