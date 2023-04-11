@@ -10,6 +10,14 @@ components:
       volumeMounts:
         - name: npm
           path: /home/user/.npm
+      endpoints:
+        - exposure: public
+          name: backstage
+          protocol: http
+          targetPort: 3000
+          attributes:
+            discoverable: true
+            urlRewriteSupported: true          
   - name: npm
     volume:
       size: 1G          
