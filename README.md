@@ -19,3 +19,9 @@ cp .npmrc backstage/
 ```
 cd backstage && yarn install
 ```
+
+4) Start the backstage:
+
+```
+yarn start
+```
