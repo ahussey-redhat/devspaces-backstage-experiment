@@ -31,4 +31,4 @@ THIS STEP FAILS NOW: 5) Access the local backstage instance:
 ```
 oc get route | grep 3000
 ```
-Open the URL above in the browser using `http://` schema prefix. 
+Open the URL above in the browser using `http://` schema prefix; It fails with `Application is not available` even though `curl localhost:3000` works
