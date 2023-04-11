@@ -25,3 +25,10 @@ cd backstage && yarn install
 ```
 yarn start
 ```
+
+THIS STEP FAILS NOW: 5) Access the local backstage instance:
+
+```
+oc get route | grep 3000
+```
+Open the URL above in the browser using `http://` schema prefix. 
