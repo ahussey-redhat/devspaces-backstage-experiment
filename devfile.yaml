@@ -12,9 +12,17 @@ components:
           path: /home/user/.npm
       endpoints:
         - exposure: public
-          name: backstage
+          name: backstage-frontend
+          attributes:
+            discoverable: true
           protocol: http
-          targetPort: 3000      
+          targetPort: 3000     
+        - exposure: public
+          name: backstage-backend
+          attributes:
+            discoverable: true
+          protocol: http
+          targetPort: 7007                
   - name: npm
     volume:
       size: 1G          
