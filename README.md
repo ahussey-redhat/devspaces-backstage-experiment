@@ -20,13 +20,17 @@ cp .npmrc backstage/
 cd backstage && yarn install
 ```
 
-4) Start the backstage:
+4) Fix the `backend.listen.host` in `app-config.yaml` and set it to value `0.0.0.0`
+
+5) Start the backstage:
 
 ```
 yarn start
 ```
 
-THIS STEP FAILS NOW: 5) Access the local backstage instance:
+5A) The browser will now open the backstage instance at `http://localhost:3000`
+
+5B) Access the local backstage instance using OpenShift Route - THIS STEP FAILS NOW!
 
 ```
 oc get route | grep 3000
