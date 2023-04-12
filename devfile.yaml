@@ -16,7 +16,7 @@ components:
           attributes:
             discoverable: true
           protocol: http
-          targetPort: 3005     
+          targetPort: 3000   
         - exposure: public
           name: backstage-backend
           attributes:
