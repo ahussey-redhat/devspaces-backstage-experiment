@@ -10,7 +10,7 @@ echo backstage | npx @backstage/create-app
 
 
 ```
-cp .npmrc backstage/
+cp .npmrc .yarnrc backstage/
 ```
 
 3) Install the backstage again:
