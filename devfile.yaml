@@ -39,33 +39,41 @@ components:
 commands:
   - exec:
       commandLine: echo backstage | npx @backstage/create-app && cp .npmrc backstage/. && cp .yarnrc backstage/.
-      component: nodejs
+      component: tools
       group:
-        kind: install
+        kind: run
       label: Init app
-      workingDir: '${PROJECTS_ROOT}'
+      workingDir: '${PROJECTS_ROOT}/devspaces-backstage-experiment'
     id: 1-init
   - exec:
       commandLine: yarn install
-      component: nodejs
+      component: tools
       group:
-        kind: install
+        kind: run
       label: Download dependencies
-      workingDir: '${PROJECTS_ROOT}/backstage'
+      workingDir: '${PROJECTS_ROOT}/devspaces-backstage-experiment/backstage'
     id: 2-dependencies
   - exec:
       commandLine: yarn dev
-      component: nodejs
+      component: tools
       group:
         kind: run
       label: Run the web app
-      workingDir: '${PROJECTS_ROOT}/backstage'
+      workingDir: '${PROJECTS_ROOT}/devspaces-backstage-experiment/backstage'
     id: 3-run
   - exec:
+      commandLine: LOG_LEVEL=debug yarn dev
+      component: tools
+      group:
+        kind: run
+      label: Run the web app in debug mode
+      workingDir: '${PROJECTS_ROOT}/devspaces-backstage-experiment/backstage'
+    id: 4-run-debug    
+  - exec:
       commandLine: yarn install && yarn dev
-      component: nodejs
+      component: tools
       group:
         kind: build
       label: Run the web app (and download dependencies)
-      workingDir: '${PROJECTS_ROOT}/backstage'
+      workingDir: '${PROJECTS_ROOT}/devspaces-backstage-experiment/backstage'
     id: install-and-run   
