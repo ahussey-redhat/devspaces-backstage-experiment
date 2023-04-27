@@ -10,13 +10,6 @@ components:
       volumeMounts:
         - name: npm
           path: /home/user/.npm
-  - name: nodejs
-    container:
-      image: 'registry.redhat.io/rhel9/nodejs-18:latest'
-      mountSources: true
-      sourceMapping: /projects
-      memoryLimit: 2G
-      endpoints:
       endpoints:
         - exposure: public
           name: backstage-frontend
@@ -30,6 +23,12 @@ components:
             discoverable: true
           protocol: http
           targetPort: 7007
+  - name: nodejs
+    container:
+      image: 'registry.redhat.io/rhel9/nodejs-18:latest'
+      mountSources: true
+      sourceMapping: /projects
+      memoryLimit: 2G
       command:
         - sleep
         - infinity            

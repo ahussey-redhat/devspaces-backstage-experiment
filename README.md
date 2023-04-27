@@ -1,38 +1,27 @@
 # devspaces-backstage-experiment
 
-1) Start by generating backstage skeleton
+## Initialize the application
+   1. Press `[F1]`
+   1. Type `Task: Run Task`
+   1. Select `devfile`
+   1. Select `devfile: Init app`
 
-```
-echo backstage | npx @backstage/create-app
-```
+> **Note:**
+>
+> Wait for this step to complete. It could take 10+ minutes depending on resources and internet bandwidth
 
-2) If the above command fails initially, it might be because `.npmrc` file is missing from the `backstage` folder and the default `.npmrc` file stored in user home folder is used. Solve this by executing:
+## Install the application + dependencies
+   1. Press `[F1]`
+   1. Type `Task: Run Task`
+   1. Select `devfile`
+   1. Select `devfile: Download dependencies`
 
+> **Note:**
+>
+> Wait for this step to complete. It could take 10+ minutes depending on resources and internet bandwidth
 
-```
-cp .npmrc .yarnrc backstage/
-```
-
-3) Install the backstage again:
-
-
-```
-cd backstage && yarn install
-```
-
-4) Fix the `backend.listen.host` in `app-config.yaml` and set it to value `0.0.0.0`
-
-5) Start the backstage:
-
-```
-yarn start
-```
-
-5A) The browser will now open the backstage instance at `http://localhost:3000`
-
-5B) Access the local backstage instance using OpenShift Route - THIS STEP FAILS NOW!
-
-```
-oc get route | grep 3000
-```
-Open the URL above in the browser using `http://` schema prefix; It fails with `Application is not available` even though `curl localhost:3000` works
+## Run the application in debug mode
+   1. Press `[F1]`
+   1. Type `Task: Run Task`
+   1. Select `devfile`
+   1. Select `devfile: Run the webapp in debug mode`
