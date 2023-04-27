@@ -10,6 +10,13 @@ components:
       volumeMounts:
         - name: npm
           path: /home/user/.npm
+  - name: nodejs
+    container:
+      image: 'registry.redhat.io/rhel9/nodejs-18:latest'
+      mountSources: true
+      sourceMapping: /projects
+      memoryLimit: 2G
+      endpoints:
       endpoints:
         - exposure: public
           name: backstage-frontend
@@ -22,7 +29,43 @@ components:
           attributes:
             discoverable: true
           protocol: http
-          targetPort: 7007                
+          targetPort: 7007
+      command:
+        - sleep
+        - infinity            
   - name: npm
     volume:
-      size: 1G          
+      size: 1G
+commands:
+  - exec:
+      commandLine: echo backstage | npx @backstage/create-app && cp .npmrc backstage/. && cp .yarnrc backstage/.
+      component: nodejs
+      group:
+        kind: install
+      label: Init app
+      workingDir: '${PROJECTS_ROOT}'
+    id: 1-init
+  - exec:
+      commandLine: yarn install
+      component: nodejs
+      group:
+        kind: install
+      label: Download dependencies
+      workingDir: '${PROJECTS_ROOT}/backstage'
+    id: 2-dependencies
+  - exec:
+      commandLine: yarn dev
+      component: nodejs
+      group:
+        kind: run
+      label: Run the web app
+      workingDir: '${PROJECTS_ROOT}/backstage'
+    id: 3-run
+  - exec:
+      commandLine: yarn install && yarn dev
+      component: nodejs
+      group:
+        kind: build
+      label: Run the web app (and download dependencies)
+      workingDir: '${PROJECTS_ROOT}/backstage'
+    id: install-and-run   
